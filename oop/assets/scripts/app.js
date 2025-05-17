@@ -13,7 +13,7 @@ class ProductItem {
   }
 
   addToCart() {
-    console.log(this.product);
+
   }
 
   render() {
@@ -45,6 +45,12 @@ class ProductItem {
 class ShoppingCart {
   items = [];
 
+  addItem(product) {
+    this.items.push(product);
+    this.totalOutput.innerHTML = `Total: \$${10}`;
+    this.render();
+  }
+
   render() {
     const cartElement = document.createElement('section');
     cartElement.className = 'cart';
@@ -54,6 +60,7 @@ class ShoppingCart {
     `;
 
     const orderButton = cartElement.querySelector('button');
+    this.totalOutput = cartElement.querySelector('h2');
     return cartElement;
   }
 }
@@ -96,4 +103,10 @@ class Shop {
   }
 }
 
-new Shop().render();
+class App {
+  static init() {
+    new Shop().render();
+  }
+}
+
+App.init();
